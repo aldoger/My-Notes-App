@@ -16,9 +16,10 @@
 
         <h2>Make a Note</h2>
 
-        <form action="/make" method="post">
-            <input class="title" type="text" name="topic" placeholder="Title" required>
-            <textarea class="content" name="content" placeholder="Content" required></textarea>
+        <form action="/update" method="post">
+            <input type="hidden" name="blogId" value="<%= id %>">
+            <input class="title" type="text" name="topicU" placeholder="Title" required>
+            <textarea class="content" name="contentU" placeholder="Content" required></textarea>
             <input class="bt" type="submit" value="Make">
         </form>
     </main>

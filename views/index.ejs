@@ -1,29 +1,64 @@
-<%- include("partials/header.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>NotesForYou</title>
+</head>
 
-<h1>Hello, this is a note app</h1>
+<body>
 
-<p>Note everything that's importan to you
-</p>
+    <%- include("partials/header.ejs") %>
 
-<div class="blog">
+    <main>
 
-    <% if (topics.length > 0 && contents.length > 0) { %>
-        <ul>
-            <% for (let i = 0; i < topics.length; i++) { %>
-                <li>
-                    <h3><%= topics[i] %></h3>
-                    <p><%= contents[i] %></p>
-                    <div>
-                        <button>Update</button>
-                        <button>Delete</button>
-                    </div>
-                </li>
+        <h1>Hello, this is a note app</h1>
+
+
+        <p>Note everything that's importan to you
+        </p>
+
+        <div class="blog">
+
+            <% if (blogs.length > 0) { %>
+                <ul>
+                    <% for (let i = 0; i < blogs.length; i++) { %>
+                        <li>
+                            <h3><%= blogs[i].topic %></h3>
+                            <p><%= blogs[i].content %></p>
+                            <div class="action">
+                                <form action="/update-note" method="GET">
+                                    <input type="hidden" name="blogId" value="<%= blogs[i].id %>"> 
+                                    <button type="submit">Update</button>
+                                </form>
+                                <form action="/delete" method="POST">
+                                    <input type="hidden" name="blogId" value="<%= blogs[i].id %>"> 
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </li>
+                    <% } %>
+                </ul>
+            <% } else { %>
+                <h2>No notes yet</h2>
             <% } %>
-        </ul>
-    <% } else { %>
-        <h2>No notes yet</h2>
-    <% } %>
+            
+        </div>
+    </main>
 
-</div>
+    <a id="add-note" href="/make-notes">
+        <button>
+            <img src="/assets/add-svgrepo-com.svg" alt="">
+            <p>Add Note</p>
+        </button>
+    </a>
 
-<%- include("partials/footer.ejs") %>
+    <%- include("partials/footer.ejs") %>
+
+</body>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</html>

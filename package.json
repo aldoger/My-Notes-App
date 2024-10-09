@@ -14,6 +14,7 @@
     "blog_project": "file:",
     "body-parser": "^1.20.2",
     "ejs": "^3.1.10",
-    "express": "^4.19.2"
+    "express": "  ^4.21.1",
+    "nanoid": "^5.0.7"
   }
 }
