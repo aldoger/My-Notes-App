@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Hello, this is a note app</h1>
+
+<p>Note everything that's importan to you
+</p>
+
+<div class="blog">
+
+    <% if (topics.length > 0 && contents.length > 0) { %>
+        <ul>
+            <% for (let i = 0; i < topics.length; i++) { %>
+                <li>
+                    <h3><%= topics[i] %></h3>
+                    <p><%= contents[i] %></p>
+                    <div>
+                        <button>Update</button>
+                        <button>Delete</button>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    <% } else { %>
+        <h2>No notes yet</h2>
+    <% } %>
+
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,13 @@
+<%- include("partials/header.ejs") %>
+
+<h2>Make a Note</h2>
+
+<form action="/make" method="post">
+    <input class="title" type="text" name="topic" placeholder="Title" required>
+    <textarea class="content" name="content" placeholder="Content" required></textarea>
+    <input class="bt" type="submit" value="Make">
+</form>
+
+
+
+<%- include("partials/footer.ejs") %>
